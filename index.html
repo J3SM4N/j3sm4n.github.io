@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="J3SM4N - Auditorías de ciberseguridad, análisis de vulnerabilidades y seguridad web en Sevilla.">
+  <title>J3SM4N | Ciberseguridad & Ethical Hacking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#050706; --panel:#0b0f0c; --panel2:#101610;
+      --text:#f2f5f2; --muted:#a8b1aa; --green:#a6ff00;
+      --green2:#6fb500; --border:rgba(166,255,0,.22);
+    }
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(circle at 80% 10%,rgba(166,255,0,.10),transparent 28%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.6}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.08;background-image:linear-gradient(rgba(166,255,0,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(166,255,0,.2) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 75%)}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1120px,92%);margin:auto}
+    nav{position:sticky;top:0;z-index:10;background:rgba(5,7,6,.84);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+    nav .wrap{height:72px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:1.35rem;letter-spacing:.12em}
+    .brand span{color:var(--green)}
+    nav a{margin-left:24px;color:var(--muted);font-size:.92rem}
+    nav a:hover{color:var(--green)}
+    .hero{min-height:calc(100vh - 72px);display:grid;place-items:center;padding:90px 0}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+    .tag{display:inline-block;border:1px solid var(--border);color:var(--green);padding:7px 12px;border-radius:999px;font:600 .78rem "JetBrains Mono",monospace;letter-spacing:.08em}
+    h1{font-size:clamp(3rem,7vw,6rem);line-height:.95;margin:20px 0}
+    h1 span{color:var(--green)}
+    .lead{font-size:1.2rem;color:var(--muted);max-width:680px}
+    .buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+    .btn{padding:13px 19px;border-radius:9px;border:1px solid var(--green);font-weight:700}
+    .btn.primary{background:var(--green);color:#071000}
+    .btn.secondary{color:var(--green)}
+    .terminal{background:#020302;border:1px solid var(--border);border-radius:16px;box-shadow:0 0 50px rgba(166,255,0,.08);overflow:hidden}
+    .terminal-top{padding:12px 16px;border-bottom:1px solid #172017;color:#738073;font:12px "JetBrains Mono",monospace}
+    .terminal-body{padding:25px;font:14px/2 "JetBrains Mono",monospace;color:#cdd7cd}
+    .terminal-body .g{color:var(--green)}
+    section{padding:90px 0}
+    .section-title{font-size:2.2rem;margin:0 0 12px}
+    .section-sub{color:var(--muted);max-width:700px;margin-bottom:35px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:linear-gradient(145deg,rgba(16,22,16,.95),rgba(8,11,9,.95));border:1px solid var(--border);padding:26px;border-radius:14px}
+    .icon{color:var(--green);font-size:1.6rem}
+    .card h3{margin:10px 0 8px}
+    .card p{margin:0;color:var(--muted);font-size:.95rem}
+    .process{counter-reset:item}
+    .step{display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+    .num{min-width:42px;height:42px;border:1px solid var(--green);border-radius:50%;display:grid;place-items:center;color:var(--green);font-family:"JetBrains Mono",monospace;font-weight:700}
+    .step h3{margin:0 0 5px}.step p{margin:0;color:var(--muted)}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:stretch}
+    .contact-box{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:32px}
+    .contact-item{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+    .contact-item small{display:block;color:var(--muted);margin-bottom:3px}
+    .contact-item strong{font-size:1.05rem}
+    .notice{border-left:3px solid var(--green);padding:18px 20px;background:rgba(166,255,0,.05);color:#dce4dc}
+    footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font-size:.9rem}
+    @media(max-width:800px){
+      .hero-grid,.contact{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      nav .links{display:none}
+      .hero{padding:65px 0}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#inicio">J3<span>SM4N</span></a>
+    <div class="links">
+      <a href="#servicios">Servicios</a>
+      <a href="#metodo">Metodología</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag">ETHICAL HACKING · AUDITORÍAS</span>
+        <h1>PROTEGE.<br><span>DETECTA.</span><br>MEJORA.</h1>
+        <p class="lead">Auditorías de ciberseguridad y análisis de vulnerabilidades para ayudar a empresas a conocer sus puntos débiles antes de que alguien pueda aprovecharlos.</p>
+        <div class="buttons">
+          <a class="btn primary" href="#contacto">Solicitar auditoría</a>
+          <a class="btn secondary" href="#servicios">Ver servicios</a>
+        </div>
+      </div>
+      <div class="terminal">
+        <div class="terminal-top">J3SM4N_SECURITY // AUDIT</div>
+        <div class="terminal-body">
+          <div><span class="g">$</span> target = "tu_empresa"</div>
+          <div><span class="g">$</span> scope = "authorized"</div>
+          <div><span class="g">$</span> assessment.start()</div>
+          <br>
+          <div>[+] Reconocimiento</div>
+          <div>[+] Enumeración</div>
+          <div>[+] Análisis de vulnerabilidades</div>
+          <div>[+] Evidencias y recomendaciones</div>
+          <br>
+          <div><span class="g">STATUS:</span> INFORME PROFESIONAL</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="wrap">
+      <h2 class="section-title">Servicios de ciberseguridad</h2>
+      <p class="section-sub">Un enfoque práctico: detectar, documentar y explicar los riesgos para que puedas tomar decisiones.</p>
+      <div class="grid">
+        <article class="card"><div class="icon">⌁</div><h3>Auditoría Web</h3><p>Revisión de aplicaciones y sitios web para detectar configuraciones y vulnerabilidades de seguridad.</p></article>
+        <article class="card"><div class="icon">◈</div><h3>Análisis de Vulnerabilidades</h3><p>Identificación y clasificación de puntos débiles según su impacto y prioridad.</p></article>
+        <article class="card"><div class="icon">⌕</div><h3>Pruebas de Penetración</h3><p>Pruebas controladas y autorizadas para comprobar hasta dónde podría llegar un atacante.</p></article>
+        <article class="card"><div class="icon">▣</div><h3>Redes y Sistemas</h3><p>Revisión de servicios expuestos, configuraciones y superficie de ataque.</p></article>
+        <article class="card"><div class="icon">▤</div><h3>Informe Profesional</h3><p>Evidencias, nivel de riesgo, impacto y recomendaciones de mitigación explicadas de forma clara.</p></article>
+        <article class="card"><div class="icon">✓</div><h3>Asesoramiento</h3><p>Orientación para priorizar mejoras de seguridad y reducir la superficie de ataque.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodo">
+    <div class="wrap">
+      <h2 class="section-title">Cómo trabajo</h2>
+      <p class="section-sub">Toda prueba se realiza con autorización y con un alcance definido previamente.</p>
+      <div class="process">
+        <div class="step"><div class="num">01</div><div><h3>Definimos el alcance</h3><p>Qué sistemas se pueden analizar, qué queda fuera y qué objetivos tiene la auditoría.</p></div></div>
+        <div class="step"><div class="num">02</div><div><h3>Reconocimiento y análisis</h3><p>Recopilación de información y revisión técnica de la superficie de ataque autorizada.</p></div></div>
+        <div class="step"><div class="num">03</div><div><h3>Validación</h3><p>Comprobación controlada de los hallazgos para evitar falsos positivos y medir su impacto.</p></div></div>
+        <div class="step"><div class="num">04</div><div><h3>Informe y recomendaciones</h3><p>Entrega de resultados priorizados y propuestas concretas para mejorar la seguridad.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap contact">
+      <div>
+        <span class="tag">CONTACTO</span>
+        <h2 class="section-title">¿Hablamos de la seguridad de tu empresa?</h2>
+        <p class="section-sub">Cuéntame qué necesitas revisar y podemos definir un alcance adecuado para tu proyecto.</p>
+        <div class="notice"><strong>Importante:</strong> las auditorías y pruebas de seguridad se realizan exclusivamente con autorización del propietario o responsable del sistema.</div>
+      </div>
+      <div class="contact-box">
+        <div class="contact-item"><small>Nombre</small><strong>Jesús Manuel Márquez Cardoso</strong></div>
+        <div class="contact-item"><small>Teléfono / WhatsApp</small><strong><a href="tel:+34642744283">642 744 283</a></strong></div>
+        <div class="contact-item"><small>Ubicación</small><strong>Sevilla, España</strong></div>
+        <div class="contact-item"><small>Email</small><strong>CONTACTO@TU-DOMINIO.COM</strong></div>
+        <div class="buttons">
+          <a class="btn primary" href="https://wa.me/34642744283" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn secondary" href="#inicio">Volver arriba</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 J3SM4N · Ciberseguridad & Ethical Hacking · Conocer para proteger. Probar para fortalecer. Informar para mejorar.</div>
+</footer>
+</body>
+</html>
